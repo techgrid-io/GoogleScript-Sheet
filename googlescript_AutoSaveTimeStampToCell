@@ -5,11 +5,11 @@
 
 //CORE VARIABLES
 // The column you want to check if something is entered.
-var COLUMNTOCHECK = 4;
-var COLUMNTORESPONSE = 10;
+var COLUMNTOCHECK = 6;
+var COLUMNTORESPONSE = 13;
 // Where you want the date time stamp offset from the input location. [row, column]
-var DATETIMELOCATION = [0,-3];
-var DATETIMELOCATIONRESPONSE = [0,-8];
+var DATETIMELOCATION = [0,-5];
+var DATETIMELOCATIONRESPONSE = [0,-11];
 // Sheet you are working on
 var SHEETNAME = 'Comment_Request'
  
@@ -27,10 +27,16 @@ function onEdit(e) {
       var dateTimeCell = selectedCell.offset(DATETIMELOCATION[0],DATETIMELOCATION[1]);
     //  var dateTimeCell = selectedCell.getCell(1,1);
       dateTimeCell.setValue(new Date());
+      var userCell = selectedCell.offset(DATETIMELOCATION[0],DATETIMELOCATION[1]+1);
+       userCell.setValue(Session.getEffectiveUser());
       }
     if( selectedCell.getColumn() == COLUMNTORESPONSE) {
       var dateTimeCell = selectedCell.offset(DATETIMELOCATIONRESPONSE[0],DATETIMELOCATIONRESPONSE[1]);
       dateTimeCell.setValue(new Date());
+      var userCell = selectedCell.offset(DATETIMELOCATIONRESPONSE[0],DATETIMELOCATIONRESPONSE[1]+1);
+       userCell.setValue(Session.getEffectiveUser());      
       }
+    
+    
   }
 }
